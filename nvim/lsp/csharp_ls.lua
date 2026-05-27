@@ -1,16 +1,13 @@
 ---@type vim.lsp.Config
 return {
-  cmd = function(dispatchers, config)
-    return vim.lsp.rpc.start({ 'csharp-ls' }, dispatchers, {
-      cwd = config.cmd_cwd or config.root_dir,
-      env = config.cmd_env,
-      detached = config.detached,
-    })
-  end,
-  root_dir = function(bufnr, _)
-    return vim.fs.root(bufnr, { '*.sln', '*.slnx', '*.csproj' })
-  end,
+  cmd = { 'csharp-ls' },
   filetypes = { 'cs' },
+  root_markers = {
+    function(name, _)
+      return name:match('%.slnx?$') or name:match('%.csproj$')
+    end,
+    '.git',
+  },
   init_options = {
     AutomaticWorkspaceInit = true,
   },
