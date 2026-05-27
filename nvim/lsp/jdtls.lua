@@ -60,6 +60,7 @@ local root_markers1 = {
   -- In multi-module maven projects it is not really possible to determine what is the parent directory
   -- and what is submodule directory. And jdtls does not break if the parent directory is at higher level than
   -- actual parent pom.xml so propagating all the way to root git directory is fine
+  'src',
   '.git',
 }
 local root_markers2 = {
