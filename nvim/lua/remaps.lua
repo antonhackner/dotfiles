@@ -1,7 +1,11 @@
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- fugitive keymaps
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "<leader>G", vim.cmd.Git)
+
+-- gitsigns keymaps
+vim.keymap.set("n", "<leader>gsb", function() require('gitsigns').stage_buffer() end)
+vim.keymap.set("n", "<leader>gsh", function() require('gitsigns').stage_hunk() end)
 
 -- undotree keymaps
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
